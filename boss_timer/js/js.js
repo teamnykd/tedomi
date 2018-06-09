@@ -22,7 +22,7 @@ function myFunction() {
 
 	if(hours > 0 && minutes > 0 && seconds > 0)
 	{
-		if(!accept_notify && hours == 0 && minutes > 10 && seconds <= 0)
+		if(!accept_notify && hours == 0 && minutes < 30 && seconds <= 0)
 		{
 			notify();
 		}
