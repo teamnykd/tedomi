@@ -251,7 +251,7 @@ function startTime() {
     var h = (next_time.getHours() - 1) - today.getHours();
     var m = next_time.getMinutes() + 60 - today.getMinutes();
     var s = next_time.getSeconds() + 60 - today.getSeconds();
-	if(h == 0 && m < 25 && !showed)
+	if(/*h == 0 && m < 25 &&*/ !showed)
 	{
 		notify();
 		showed = true;
