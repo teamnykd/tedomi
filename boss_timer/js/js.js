@@ -4,6 +4,10 @@ var next = new Date();
 var interval = setInterval(myFunction, 1000);
 var current_boss =[];
 var accept_notify = false;
+function myFunction2() {	
+	var audio = new Audio('nhac.mp3');
+	audio.play();
+}
 function myFunction() {	
 
 	if (Notification.permission !== "granted") {
