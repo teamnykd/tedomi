@@ -1,0 +1,86 @@
+.timer {
+	    margin: auto;
+	   	padding: auto;
+	    text-align: center;
+	    font-size: 40px;	
+	}
+
+	table#tboss {
+		width: 100%;
+		height: 50%;
+		position: absolute;
+		bottom:0px;
+		font-size: 16px;
+		border: 1px solid #CCC; 
+		font-family: Arial, Helvetica, sans-serif;
+	} 
+	thead {
+		padding: 4px;
+		margin: 3px;		
+		border: 1px solid #CCC;	
+		font-weight: bold;
+		font-size: 18px;
+		background-color: #CCC;
+
+		vertical-align: top;
+		text-align: center;
+	}
+	tbody {
+		padding: 4px;
+		margin: 3px;		
+		border: 1px solid #CCC;	
+		font-weight: bold;
+		font-size: 18px;	
+
+		vertical-align: top;
+		text-align: left;	
+	}
+	td {
+		padding: 4px;
+		margin: 3px;		
+		border: 1px solid #CCC;	
+		font-weight: bold;
+	}
+	.Image
+	{
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: right;
+	}
+	.Display
+	{
+		width: 30vh;
+		height: 30vh;
+	}
+	.Kutum
+	{  
+		background-image: url("../images/Kutum.png");
+	}
+	.Kzarka
+	{  
+		background-image: url("../images/Kzarka.png");		
+	}
+	.Karanda
+	{  
+		background-image: url("../images/Karanda.png");	
+	}
+	.Nouver
+	{  
+		background-image: url("../images/Nouver.png");	
+	}	
+	.Muraka
+	{  
+		background-image: url("../images/Muraka.png");			
+	}	
+	.Quint
+	{  
+		background-image: url("../images/Quint.png");			
+	}	
+	.Offin
+	{  
+		background-image: url("../images/Offin.png");
+	}
+	.Goodnight
+	{  
+		background-image: url("../images/Goodnight.png");
+	}	
