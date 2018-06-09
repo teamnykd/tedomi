@@ -20,13 +20,17 @@ function myFunction() {
 	var minutes = format_time(Math.floor(left / 60) % 60);
 	var seconds = format_time(Math.floor(left % 60));
 
-	text_left.innerHTML =  hours +" : "+minutes +" : "+seconds;	
-	hours = minutes = 0;
+	text_left.innerHTML =  hours +" : "+minutes +" : "+seconds;		
 	if(parseInt(hours) >= 0 && parseInt(minutes) >= 0 && parseInt(seconds) != 0) 
 	{			
 		if(parseInt(hours) == 0 && parseInt(minutes) < 10)
 		{
 			notify();
+		}
+		// 2 phut
+		if(parseInt(minutes) % 2 == 0 && parseInt(seconds) == 0)
+		{
+			show_notify = false;	
 		}
 		return;		
 	}
