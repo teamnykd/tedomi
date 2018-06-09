@@ -1,1 +1,1 @@
-<?php include_once("JavascriptGame\\HTML\\home.html"); ?>
+<?php include_once("JavascriptGame\HTML\home.html"); ?>
