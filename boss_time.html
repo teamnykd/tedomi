@@ -244,9 +244,9 @@
 </table>
 <script language="JavaScript">
 function startTime() {
-	//if (Notification.permission !== "granted") {
-	//	Notification.requestPermission();
-	//}
+	if (Notification.permission !== "granted") {
+		Notification.requestPermission();
+	}
 	checkTime();
     var today = new Date();
     var h = (next_time.getHours() - 1) - today.getHours();
