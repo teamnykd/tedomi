@@ -4,6 +4,7 @@ var next = new Date();
 var interval = setInterval(myFunction, 1000);
 var current_boss =[];
 var accept_notify = false;
+var show_notify = false;
 function myFunction() {	
 
 	if (Notification.permission !== "granted") {
@@ -24,17 +25,15 @@ function myFunction() {
 	hours = minutes = 0;
 	if(parseInt(hours) >= 0 && parseInt(minutes) >= 0 && parseInt(seconds) != 0) 
 	{			
-		console.log(parseInt(hours) == 0);	
-		if(!accept_notify && parseInt(hours) == 0 && parseInt(seconds) < 30)
+		if(!show_notify && !accept_notify && parseInt(hours) == 0 && parseInt(minutes) < 10)
 		{
-			console.log("here");
 			notify();
 		}
 		return;		
 	}
 	else
 	{
-		
+		show_notify = false;
 		accept_notify = false;
 	}
 
@@ -191,7 +190,7 @@ function setNewBoss(boss)
 function format_time(time)
 {
 	if(time < 10) return "0"+time;
-	return time
+	return time;
 }
 
 function notify(){
@@ -203,8 +202,16 @@ function notify(){
 		  body: (current_boss.length == 2 ? (current_boss[0] +" và "+current_boss[1]):current_boss[0]),
 		  icon: "Test2.jpg",
 		});
+		accept_notify = false;
+		show_notify = true;
 		notification.onclick = function () {	
-		  accept = true;
-		};
+		  accept_notify = true;		  
+		};	
+		notification.onclose = function () {	
+			if(!accept_notify)
+			{
+				show_notify = false;
+			}
+		};		
 	}
 }
