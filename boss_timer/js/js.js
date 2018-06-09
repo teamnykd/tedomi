@@ -206,6 +206,8 @@ function notify(){
 			  body: (current_boss.length == 2 ? (current_boss[0] +" và "+current_boss[1]):current_boss[0]),
 			  icon: "Test2.jpg",
 			});
+			var audio = new Audio('nhac.mp3');
+			audio.play();
 		}
 		show_notify = true;
 	}
