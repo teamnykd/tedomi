@@ -4,7 +4,6 @@ var next = new Date();
 var interval = setInterval(myFunction, 1000);
 var current_boss =[];
 var accept_notify = false;
-var show_notify = false;
 function myFunction() {	
 
 	if (Notification.permission !== "granted") {
@@ -25,7 +24,7 @@ function myFunction() {
 	hours = minutes = 0;
 	if(parseInt(hours) >= 0 && parseInt(minutes) >= 0 && parseInt(seconds) != 0) 
 	{			
-		if(!show_notify && !accept_notify && parseInt(hours) == 0 && parseInt(minutes) < 10)
+		if(parseInt(hours) == 0 && parseInt(minutes) < 10)
 		{
 			notify();
 		}
@@ -33,8 +32,7 @@ function myFunction() {
 	}
 	else
 	{
-		show_notify = false;
-		accept_notify = false;
+		show_notify = false;		
 	}
 
 	c_hour = current.getHours();
@@ -198,20 +196,13 @@ function notify(){
 		Notification.requestPermission();
 	}
 	else{
-		var notification = new Notification('Sắp ra boss', {
-		  body: (current_boss.length == 2 ? (current_boss[0] +" và "+current_boss[1]):current_boss[0]),
-		  icon: "Test2.jpg",
-		});
-		accept_notify = false;
+		if(!show_notify )
+		{
+			var notification = new Notification('Sắp ra boss', {
+			  body: (current_boss.length == 2 ? (current_boss[0] +" và "+current_boss[1]):current_boss[0]),
+			  icon: "Test2.jpg",
+			});
+		}
 		show_notify = true;
-		notification.onclick = function () {	
-		  accept_notify = true;		  
-		};	
-		notification.onclose = function () {	
-			if(!accept_notify)
-			{
-				show_notify = false;
-			}
-		};		
 	}
 }
