@@ -7,6 +7,9 @@ var accept_notify = false;
 function myFunction2() {	
 	var audio = new Audio('boss_timer/js/nhac.mp3');
 	audio.play();
+	var current = new Date();
+
+	next.setHours(current.getHours(), current.getMinutes()+1, 0);
 }
 function myFunction() {	
 
@@ -17,8 +20,7 @@ function myFunction() {
 
 	var text_left = document.getElementById("left");
 	var current = new Date();
-
-
+	
 	var left = ((next - current)>0)?Math.abs(next - current)/1000:0/1000;
 	var hours = format_time(Math.floor(left / 3600) % 24);        
 	var minutes = format_time(Math.floor(left / 60) % 60);
