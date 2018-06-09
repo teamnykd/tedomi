@@ -15,22 +15,26 @@ function myFunction() {
 	var current = new Date();
 
 
-	var left = Math.abs(next - current)/1000;
+	var left = ((next - current)>0)?Math.abs(next - current)/1000:0/1000;
 	var hours = format_time(Math.floor(left / 3600) % 24);        
 	var minutes = format_time(Math.floor(left / 60) % 60);
 	var seconds = format_time(Math.floor(left % 60));
-	
-	if(parseInt(hours) >= 0 && parseInt(minutes) >= 0 && parseInt(seconds) > 2) //magic number
-	{
-	
-		if(!accept_notify && parseInt(hours) == 0 && parseInt(minutes) < 30)
-		{			
+
+	text_left.innerHTML =  hours +" : "+minutes +" : "+seconds;	
+	hours = minutes = 0;
+	if(parseInt(hours) >= 0 && parseInt(minutes) >= 0 && parseInt(seconds) != 0) 
+	{			
+		console.log(parseInt(hours) == 0);	
+		if(!accept_notify && parseInt(hours) == 0 && parseInt(seconds) < 30)
+		{
+			console.log("here");
 			notify();
 		}
 		return;		
 	}
 	else
 	{
+		
 		accept_notify = false;
 	}
 
@@ -57,7 +61,7 @@ function myFunction() {
 		switchTime(4);
 		current_row = 4;
 	}
-	text_left.innerHTML =  hours +" : "+minutes +" : "+seconds;	
+	
 	/*
 	var text_current = document.getElementById("current");
 	var text_next = document.getElementById("next");
