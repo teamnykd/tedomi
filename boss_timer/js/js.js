@@ -4,6 +4,7 @@ var next = new Date();
 var interval = setInterval(myFunction, 1000);
 var current_boss =[];
 var accept_notify = false;
+/*
 function myFunction2() {	
 	var audio = new Audio('boss_timer/js/nhac.mp3');
 	audio.play();
@@ -11,6 +12,7 @@ function myFunction2() {
 
 	next.setHours(current.getHours(), current.getMinutes()+1, 0);
 }
+*/
 function myFunction() {	
 
 	if (Notification.permission !== "granted") {
