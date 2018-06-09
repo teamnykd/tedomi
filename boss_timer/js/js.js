@@ -5,7 +5,7 @@ var interval = setInterval(myFunction, 1000);
 var current_boss =[];
 var accept_notify = false;
 function myFunction2() {	
-	var audio = new Audio('nhac.mp3');
+	var audio = new Audio('../nhac.mp3');
 	audio.play();
 }
 function myFunction() {	
