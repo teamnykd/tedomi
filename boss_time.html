@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+    width:100%;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+table#boss_time tr:nth-child(even) {
+    background-color: #eee;
+}
+table#boss_time tr:nth-child(odd) {
+   background-color: #fff;
+}
+table#boss_time th {
+    background-color: black;
+    color: white;
+}
+</style>
+</head>
+<body>
+<table class="boss_time">
+  <tr>
+    <th></th>
+    <th>Thứ hai</th>
+    <th>Thứ ba</th>
+    <th>Thứ tư</th>
+    <th>Thứ năm</th>
+    <th>Thứ sáu</th>
+    <th>Thứ bảy</th>
+    <th>Chủ nhật</th>
+  </tr>
+  <tr>
+    <td >1:00</td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+  </tr>
+  <tr>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+  </tr>
+  <tr>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+  </tr>
+  <tr>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+  </tr>
+  <tr>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+  </tr>
+  <tr>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+  </tr>
+  <tr>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+  </tr>
+  <tr>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+  </tr>
+  <tr>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+  </tr>
+  <tr>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+    <td ></td>
+  </tr>
+</table>
+
+<script language="JavaScript">
+function notifyMe() {
+  // Let's check if the browser supports notifications
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
+
+  // Let's check if the user is okay to get some notification
+  else if (Notification.permission === "granted") {
+    // If it's okay let's create a notification
+    var notification = new Notification("Hi there!");
+  }
+	
+  // Otherwise, we need to ask the user for permission
+  // Note, Chrome does not implement the permission static property
+  // So we have to check for NOT 'denied' instead of 'default'
+  else if (Notification.permission !== 'denied') {
+    Notification.requestPermission(function (permission) {
+
+      // Whatever the user answers, we make sure we store the information
+      if(!('permission' in Notification)) {
+        Notification.permission = permission;
+		alert(permission)
+      }
+
+      // If the user is okay, let's create a notification
+      if (permission === "granted") {
+        var notification = new Notification("Hi there!");
+      }
+    });
+  }
+alert(Notification.permission);
+  // At last, if the user already denied any notification, and you 
+  // want to be respectful there is no need to bother him any more.
+}
+</script> 
+<button onclick="notifyMe()">Notify me!</button>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
