@@ -251,7 +251,7 @@ function startTime() {
     var h = (next_time.getHours() - 1) - today.getHours();
     var m = next_time.getMinutes() + 60 - today.getMinutes();
     var s = next_time.getSeconds() + 60 - today.getSeconds();
-	if(/*h == 0 && m < 25 &&*/ !showed)
+	if(h == 0 && m < 25 && !showed)
 	{
 		notify();
 		showed = true;
@@ -265,7 +265,8 @@ function startTime() {
     var t = setInterval(startTime, 500);	
 }
 function formatTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    if (i < 10) {i = "0" + i};
+		// add zero in front of numbers < 10
     return i;
 }
 var showed = false;
@@ -275,9 +276,9 @@ if (Notification.permission !== "granted") {
 Notification.requestPermission();
 }
  else{
-var notification = new Notification('hello', {
-  body: "Sắp ra boss " + (current_boss.length == 2 ? current_boss[0] +" và "+current_boss[1]:current_boss[0]),
-  image: "images/Test2.jpg",
+var notification = new Notification('Sắp ra boss', {
+  body: (current_boss.length == 2 ? (current_boss[0] +" và "+current_boss[1]):current_boss[0]),
+  icon: "Test2.jpg",
 });
 notification.onclick = function () {	
   //window.open("http://google.com");
@@ -407,5 +408,6 @@ function checkTime()
 </script> 
 
 <body onload="startTime()">
+<button onclick="notify()">Click me</button>
 </body>
 </html>
