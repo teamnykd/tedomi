@@ -276,7 +276,7 @@ Notification.requestPermission();
 }
  else{
 var notification = new Notification('hello', {
-  body: "Sắp ra boss " + current_boss.length == 2 ? current_boss[0] +" và "+current_boss[1]:current_boss[0],
+  body: "Sắp ra boss " + (current_boss.length == 2 ? current_boss[0] +" và "+current_boss[1]:current_boss[0]),
   image: "images/Test2.jpg",
 });
 notification.onclick = function () {	
