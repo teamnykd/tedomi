@@ -1,7 +1,7 @@
 var call = 1;
 var current_block = 0;
 var next = new Date();
-var interval = setInterval(myFunction, 500);
+var interval = setInterval(myFunction, 1000);
 var current_boss =[];
 var accept_notify = false;
 function myFunction() {	
@@ -19,14 +19,15 @@ function myFunction() {
 	var hours = format_time(Math.floor(left / 3600) % 24);        
 	var minutes = format_time(Math.floor(left / 60) % 60);
 	var seconds = format_time(Math.floor(left % 60));
-
-	if(hours > 0 && minutes > 0 && seconds > 0)
+	
+	if(parseInt(hours) >= 0 && parseInt(minutes) >= 0 && parseInt(seconds) > 2) //magic number
 	{
-		if(!accept_notify && hours == 0 && minutes < 30 && seconds <= 0)
-		{
+	
+		if(!accept_notify && parseInt(hours) == 0 && parseInt(minutes) < 30)
+		{			
 			notify();
 		}
-		return;
+		return;		
 	}
 	else
 	{
@@ -56,14 +57,13 @@ function myFunction() {
 		switchTime(4);
 		current_row = 4;
 	}
-	
+	text_left.innerHTML =  hours +" : "+minutes +" : "+seconds;	
 	/*
 	var text_current = document.getElementById("current");
 	var text_next = document.getElementById("next");
 	text_current.innerHTML = current.toLocaleTimeString('vi');
 	text_next.innerHTML =  next.toTimeString();
-	*/
-	text_left.innerHTML =  hours +" : "+minutes +" : "+seconds;
+	*/	
 }
 
 function switchTime(block)
