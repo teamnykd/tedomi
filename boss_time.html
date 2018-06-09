@@ -244,30 +244,35 @@
 </table>
 <script language="JavaScript">
 function startTime() {
-	if (Notification.permission !== "granted") {
-		Notification.requestPermission();
-	}
+	//if (Notification.permission !== "granted") {
+	//	Notification.requestPermission();
+	//}
+	checkTime();
     var today = new Date();
     var h = (next_time.getHours() - 1) - today.getHours();
-    var m = next_time.getMinutes() + 60 - today.getMinutes();
-    var s = next_time.getSeconds() + 60 - today.getSeconds();
+    var m = next_time.getMinutes() + 59 - today.getMinutes();
+    var s = next_time.getSeconds() + 59 - today.getSeconds();
 	if(h == 0 && m < 25 && !showed)
 	{
 		notify();
 		showed = true;
 	}
-	
-    m = formatTime(m);
-    s = formatTime(s);	
+	h = formatTime(h,m);
+    m = formatTime(m,s);
+    s = formatTime(s,0);	
     document.getElementById('time').innerHTML =
-    h + ":" + m + ":" + s;
-	checkTime();	
+    h + ":" + m + ":" + s;	
     var t = setInterval(startTime, 500);	
 }
-function formatTime(i) {
-    if (i < 10) {i = "0" + i};
+function formatTime(t,s) {
+	if(s>=60)
+		t+=1;
+	if(t>=60)
+		t-=60;
+    if (t < 10) {t = "0" + t};
 		// add zero in front of numbers < 10
-    return i;
+	
+    return t;
 }
 var showed = false;
 var clicked = false;
@@ -408,6 +413,5 @@ function checkTime()
 </script> 
 
 <body onload="startTime()">
-<button onclick="notify()">Click me</button>
 </body>
 </html>
