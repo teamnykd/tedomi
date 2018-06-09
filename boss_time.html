@@ -271,14 +271,13 @@ function formatTime(i) {
 var showed = false;
 var clicked = false;
 function notify(){
-
-
 if (Notification.permission !== "granted") {
 Notification.requestPermission();
 }
  else{
 var notification = new Notification('hello', {
-  body: "Hey there!",
+  body: "Sắp ra boss " + current_boss.length == 2 ? current_boss[0] +" và "+current_boss[1]:current_boss[0],
+  image: "images/Test2.jpg",
 });
 notification.onclick = function () {	
   //window.open("http://google.com");
@@ -330,6 +329,7 @@ function setNewBoss(boss)
 var old_col = 0;
 var old_row = 0;
 var next_time = new Date();
+var current_boss = [];
 function checkTime()
 {
 	var d = new Date();
@@ -370,8 +370,7 @@ function checkTime()
 	var current_col = 1;
 	var col = row.cells[current_col];    
 	while(day > 0)
-	{
-		console.log(current_col);
+	{		
 		if(col.colSpan == 2)
 		{
 			current_col+=1;			
@@ -389,6 +388,7 @@ function checkTime()
 		if(row.cells[current_col].colSpan == 1)		 
 		{   	
 			setNewBoss([row.cells[current_col].firstChild.nodeValue, row.cells[current_col+1].firstChild.nodeValue]);
+			current_boss = [row.cells[current_col].firstChild.nodeValue, row.cells[current_col+1].firstChild.nodeValue];
 			row.cells[current_col].bgColor ='#800080';
 			row.cells[current_col+1].bgColor ='#800080';
 		}
@@ -396,10 +396,12 @@ function checkTime()
 		{
 			setNewBoss([row.cells[current_col].firstChild.nodeValue]);   
 			row.cells[current_col].bgColor ='#800080';
+			current_boss = [row.cells[current_col].firstChild.nodeValue];
 		}	
 		old_col = current_col;
 		old_row = current_row;
 		showed = false;
+		
 	}
 }
 </script> 
