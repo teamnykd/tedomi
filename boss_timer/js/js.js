@@ -55,6 +55,8 @@ function myFunction() {
 		current_row = 5;
 	}else if(c_hour < 1 ||((c_hour == 22 && c_min > 30) || c_hour > 22))
 	{
+		if(c_hour != 0)
+			next.setDate(next.getDate()+1);
 		switchTime(1);
 		current_row = 1;
 	}else if(c_hour >= 1 && c_hour < 10)
@@ -89,8 +91,7 @@ function switchTime(block)
 	
 	switch(block)
 	{
-		case 1:
-			next.setDate(next.getDate()+1);
+		case 1:	
 			next.setHours(1);
 			next.setMinutes(0);			 
 			break;
