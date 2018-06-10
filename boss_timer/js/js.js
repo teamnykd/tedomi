@@ -4,15 +4,21 @@ var next = new Date();
 var interval = setInterval(myFunction, 1000);
 var current_boss =[];
 var accept_notify = false;
-/*
-function myFunction2() {	
-	var audio = new Audio('boss_timer/js/nhac.mp3');
-	audio.play();
-	var current = new Date();
 
-	next.setHours(current.getHours(), current.getMinutes()+1, 0);
+function test(inp)
+{
+	switch(inp)
+	{
+		case 1:
+			var audio = new Audio('boss_timer/js/nhac.mp3');
+			audio.play();
+		break;
+		default:
+			notify();
+		break;
+	}	
 }
-*/
+
 function myFunction() {	
 
 	if (Notification.permission !== "granted") {
@@ -215,7 +221,7 @@ function notify(){
 			  body: (current_boss.length == 2 ? (current_boss[0] +" và "+current_boss[1]):current_boss[0]),
 			  icon: "Test2.jpg",
 			});
-			var audio = new Audio('nhac.mp3');
+			var audio = new Audio('boss_timer/js/nhac.mp3');
 			audio.play();
 		}
 		show_notify = true;
