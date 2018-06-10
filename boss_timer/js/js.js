@@ -1,5 +1,6 @@
 var call = 1;
-var current_block = 0;
+var current_row = 0;
+var current_col = 0;
 var next = new Date();
 var interval = setInterval(myFunction, 1000);
 var current_boss =[];
@@ -25,7 +26,7 @@ function test(inp)
 }
 
 function myFunction() {	
-
+	
 	if (Notification.permission !== "granted") {
 		//alert(Notification.permission);
 		//Notification.requestPermission();
@@ -63,25 +64,20 @@ function myFunction() {
 	if(c_hour >= 18 && ((c_hour == 22 && c_min < 30) || c_hour < 22))
 	{
 		switchTime(5);
-		current_row = 5;
 	}else if(c_hour < 1 ||((c_hour == 22 && c_min > 30) || c_hour > 22))
 	{
 		if(c_hour != 0)
 			next.setDate(next.getDate()+1);
 		switchTime(1);
-		current_row = 1;
 	}else if(c_hour >= 1 && c_hour < 10)
 	{
 		switchTime(2);
-		current_row = 2;
 	}else if(c_hour >= 10 && c_hour < 14)
 	{
 		switchTime(3);
-		current_row = 3;
 	}else
 	{
-		switchTime(4);
-		current_row = 4;
+		switchTime(4);;
 	}
 	
 	/*
@@ -92,81 +88,93 @@ function myFunction() {
 	*/	
 }
 
-function switchTime(block)
-{		
-	if(current_block == block)
-		return;
-	current_block = block;
-	var current_col = 1;
-	var current_row = block;	
-	
-	switch(block)
+function switchTime(block_time)
+{	
+	var row = 0;
+	switch(block_time)
 	{
 		case 1:	
 			next.setHours(1);
-			next.setMinutes(0);			 
+			next.setMinutes(0);	
+			row = 1		 
 			break;
 		case 2:
 			next.setHours(10);
 			next.setMinutes(0);
+			row = 2;		
 			break;
 		case 3:
 			next.setHours(14);
 			next.setMinutes(0);
+			row = 3;
 			break;
 		case 4:
 			next.setHours(18);
 			next.setMinutes(0);
+			row = 4;
 			break;
 		case 5:
 			next.setHours(22);
 			next.setMinutes(30);
+			row = 5;
 		break;
 		default:break;
 	}
 	next.setSeconds(0);	
-
-	var day = next.getDay() == 0 ? 6 : next.getDay() - 1;	
-	var refTab = document.getElementById("tboss");	
-	var row = refTab.rows[current_row];	
-	var col = row.cells[current_col];    
-	while(day > 0)
+	var col = next.getDay() == 0 ? 6 : next.getDay() - 1;	
+	switch_stable(row, col);
+}
+function switch_stable(row,col) //row start from 1, col from 0
+{
+	if(current_row == row && current_col == col)
+		return;
+	else
 	{		
-		if(col.colSpan == 2)
+		setColor(current_row,current_col,'white');		
+		current_row = row;
+		current_col = col;
+		setColor(current_row,current_col,'#800080');
+	}
+	
+}
+function setColor(row,col,color)
+{
+	if(row < 1 || row > 5 || col < 0  ||  col > 6)
+		return;
+	var refTab = document.getElementById("tboss");	
+	var row_tmp = refTab.rows[row];	
+	var col_pos = 1;
+	var col_tmp = row_tmp.cells[col_pos];    
+	while(col > 0)
+	{		
+		if(col_tmp.colSpan == 2)
 		{
-			current_col+=1;			
-			day--;
+			col_pos+=1;			
+			col--;
 		}
 		else
 		{
-			current_col+=2;			
-			day--;
+			col_pos+=2;			
+			col--;
 		}
-		col = row.cells[current_col];
+		col_tmp = row_tmp.cells[col_pos];
 	};
 	
-	if(row.cells[current_col].colSpan == 1)		 
+	if(row_tmp.cells[col_pos].colSpan == 1)		 
 	{   	
-		var col2 = row.cells[current_col+1];
-		setNewBoss([col.firstChild.nodeValue, col2.firstChild.nodeValue]);
-		current_boss = [col.firstChild.nodeValue, col2.firstChild.nodeValue];
-		col.bgColor ='#800080';
-		col2.bgColor ='#800080';
-
-		refTab.rows[current_row].cells[(current_col-1)<=0?refTab.rows[current_row].cells.length-1:(current_col-1)].bgColor ='white';
-		refTab.rows[current_row].cells[(current_col-2)<=0?refTab.rows[current_row].cells.length-2:(current_col-2)].bgColor ='white';
+		var col2 = row_tmp.cells[col_pos+1];
+		setNewBoss([col_tmp.firstChild.nodeValue, col2.firstChild.nodeValue]);
+		current_boss = [col_tmp.firstChild.nodeValue, col2.firstChild.nodeValue];
+		col_tmp.bgColor = color;
+		col2.bgColor = color;
 	}
 	else
 	{
-		setNewBoss([col.firstChild.nodeValue]);   
-		col.bgColor ='#800080';
-		current_boss = [col.firstChild.nodeValue];
-
-		refTab.rows[current_row].cells[(current_col-1)<=0?refTab.rows[current_row].cells.length-1:(current_col-1)].bgColor ='white';
-		refTab.rows[current_row].cells[(current_col-2)<=0?refTab.rows[current_row].cells.length-2:(current_col-2)].bgColor ='white';
+		setNewBoss([col_tmp.firstChild.nodeValue]);   
+		col_tmp.bgColor =color;
+		current_boss = [col_tmp.firstChild.nodeValue];
 	}	
 }
-
 function setNewBoss(boss)
 {	
 	var next_boss = document.getElementById("next_boss");
