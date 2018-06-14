@@ -23,7 +23,7 @@ function getHeight() {
 }
 
 function startGame() { 
-	alert(getWidth()+"="+getHeight());
+	//alert(getWidth()+"="+getHeight());
     myGameArea.init();	
 	gameManager.init();	
 	document.addEventListener("keydown", keydownHandler = function (e) {	
