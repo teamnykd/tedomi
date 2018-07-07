@@ -19,8 +19,8 @@ gameScene.init = function(){
 
 };
 gameScene.preload = function(){
-	this.load.image('background','tedomi/assets/images/disgusting.jpg');
-	this.load.image('test','tedomi/assets/images/Ogre.png');
+	this.load.image('background','assets/images/disgusting.jpg');
+	this.load.image('test','assets/images/Ogre.png');
 };
 gameScene.create = function(){
 	this.background = this.add.image(0, 0,'background');
